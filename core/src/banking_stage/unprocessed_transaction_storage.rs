@@ -527,6 +527,7 @@ impl UnprocessedTransactionStorage {
     pub(crate) fn cache_epoch_boundary_info(&mut self, bank: &Bank) {
         match self {
             Self::LocalTransactionStorage(_) => (),
+            UnprocessedTransactionStorage::BundleStorage(_) => (),
             Self::VoteStorage(vote_storage) => vote_storage.cache_epoch_boundary_info(bank),
         }
     }
