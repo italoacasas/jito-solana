@@ -265,9 +265,11 @@ impl Tvu {
             exit.clone(),
         );
 
+        let (latest_root_sender, _latest_root_receiver) = unbounded();
         let replay_stage_config = ReplayStageConfig {
             vote_account: *vote_account,
             authorized_voter_keypairs,
+            latest_root_senders: vec![latest_root_sender],
             exit: exit.clone(),
             rpc_subscriptions: rpc_subscriptions.clone(),
             leader_schedule_cache: leader_schedule_cache.clone(),
